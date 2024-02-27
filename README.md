@@ -219,9 +219,14 @@ echo "KEYMAP=la-latin1\nXKBLAYOUT=latam" > /etc/vconsole.conf
 ```
 10.3 Instalar grub (Si se desea cambiar Arch por otro
 ```
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=Arch
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 ```
 10.4 Generar el archivo de configuracion de grub
 ```
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+10.5 Permitir la ejecución de os-prober para detectar otros sistemas operativos para grub
+```
+echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+```
+10.6 
