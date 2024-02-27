@@ -138,7 +138,7 @@ swapon /dev/sdXY
 ### 6. Instalar paquetes iniciales
 Paquetes base:
 ```
-pacstrap /mnt base base-devel linux linux-firmware nano grub git
+pacstrap /mnt base base-devel linux linux-firmware nano grub git networkmanager wpa_supplicant
 ```
 Paquetes adicionales (en caso de tener instalado el sistema operativo Windows):
 ```
@@ -152,8 +152,7 @@ genfstan -U /mnt >> /mnt/etc/fstab
 ```
 ### 8. Cambiar al entorno chroot
 > [!NOTE]
-> 
-El entorno chroot es una herramienta que permite crear un ambiente aislado dentro del sistema operativo donde un proceso puede ejecutarse con un sistema de archivos diferente al del sistema principal. Esto es útil para realizar tareas de mantenimiento, instalación de sistemas operativos o ejecutar aplicaciones que necesitan acceder a un conjunto específico de archivos y recursos.
+> El entorno chroot es una herramienta que permite crear un ambiente aislado dentro del sistema operativo donde un proceso puede ejecutarse con un sistema de archivos diferente al del sistema principal. Esto es útil para realizar tareas de mantenimiento, instalación de sistemas operativos o ejecutar aplicaciones que necesitan acceder a un conjunto específico de archivos y recursos.
 ```
 arch-chroot /mnt
 ```
@@ -202,6 +201,27 @@ hwclock --systohc
 ```
 10.2 Idioma del sistema
 ```
-nano 
+nano /etc/locale.gen
+```
+Buscar (Ctrl + w) tu idioma y decomentar la que este en `UTF-8`, por ejemplo para USA: `en_US`, Peru: `es_PE`
+> [!NOTE]
+> Se puede descomentar múltiples idiomas
+
+Generar
+```
+locale-gen
 ```
 10.2 Distribución de teclado
+
+Para el latinoamericano:
+```
+echo "KEYMAP=la-latin1\nXKBLAYOUT=latam" > /etc/vconsole.conf
+```
+10.3 Instalar grub (Si se desea cambiar Arch por otro
+```
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=Arch
+```
+10.4 Generar el archivo de configuracion de grub
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
