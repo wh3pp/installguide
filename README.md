@@ -181,11 +181,12 @@ Buscar (ctrl + w) esta parte:
 ## Uncomment to allow members of group wheel to execute any command
 #%wheel ALL=(ALL:ALL) ALL
 ```
+Descomentar eliminando el **#** que precede a **wheel**, presionar **ctrl + o**, confirmar y presionar **ctrl + x** para salir.
+
 9.5 Agregar nombre a tu portatil o pc (Cambiar **nombre** por el nombre de la pc deseada, en caso de que no exista el archivo /etc/hostname crearlo con `mkdir /etc/hostname`)
 ```
 echo nombre > /etc/hostname
 ```
-Descomentar eliminando el **#** que precede a **wheel**, presionar **ctrl + o**, confirmar y presionar **ctrl + x** para salir.
 ### 10. Configuraciones adicionales
 10.1 Zona horaria
 ```
