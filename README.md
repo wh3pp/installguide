@@ -32,7 +32,7 @@ lista todos los dispositivos Wi-Fi
 ```
 device list
 ```
-En caso de que el dispositivo o adaptador se encuentre apagdo encenderlo, reemplazar _device_ con el nombre del dispositivo.
+En caso de que el dispositivo o adaptador se encuentre apagdo encenderlo
 
 Para un dispositivo (reemplazar dispositivo con el nombre del dispositivo):
 ```
