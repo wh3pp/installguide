@@ -118,21 +118,90 @@ mkfs.ext4 /dev/sdXY
 ```
 mkfswap /dev/sdXY
 ```
-### 5. Activar la particion swap (En caso de tenerla)
-reemplazar **_sdXY_** con la etiqueta de la particion swap
-```
-mkfswap /dev/sdXY
-```
-### 6. Montar las particiones en /mnt
-6.1 Montar /root (reemplazar **_sdXY_** con la etiqueta de la particion root)
+### 5. Montar las particiones
+5.1 Montar /root (reemplazar **_sdXY_** con la etiqueta de la particion root)
 ```
 mount /dev/sdXY /mnt
 ```
-6.2 Crear directorios para montar la particion EFI
+5.2 Crear directorios para montar la particion EFI
 ```
 mkdir -p /mnt/boot/efi
 ```
-6.3 Montar EFI (reemplazar **_sdXY_** con la etiqueta de la particion EFI)
+5.3 Montar EFI (reemplazar **_sdXY_** con la etiqueta de la particion EFI)
 ```
 mount /dev/sdXY /mnt/boot/efi
 ```
+5.4 En caso de tenerla, activar la particion swap (reemplazar **_sdXY_** con la etiqueta de la particion swap)
+```
+swapon /dev/sdXY
+```
+### 6. Instalar paquetes iniciales
+Paquetes base:
+```
+pacstrap /mnt base base-devel linux linux-firmware nano grub git
+```
+Paquetes adicionales (en caso de tener instalado el sistema operativo Windows):
+```
+pacstrap /mnt efibootmgr os-prober
+```
+### 7. Generar el archivo fstab
+> [!NOTE]
+> El archivo /etc/fstab (abreviatura de "file system table") es un archivo de configuración en sistemas operativos Unix y Linux que mapea las particiones de disco y dispositivos de almacenamiento en el sistema de archivos. En él, se especifican las opciones de montaje y configuraciones asociadas para cada partición o dispositivo.
+```
+genfstan -U /mnt >> /mnt/etc/fstab
+```
+### 8. Cambiar al entorno chroot
+> [!NOTE]
+> 
+El entorno chroot es una herramienta que permite crear un ambiente aislado dentro del sistema operativo donde un proceso puede ejecutarse con un sistema de archivos diferente al del sistema principal. Esto es útil para realizar tareas de mantenimiento, instalación de sistemas operativos o ejecutar aplicaciones que necesitan acceder a un conjunto específico de archivos y recursos.
+```
+arch-chroot /mnt
+```
+### 9. Agregar contraseña y usuario
+9.1 Contraseña a /root
+```
+passwd
+```
+9.2 Agregar usuario y asignarle una contraseña (cambiar **_usuario_** por el nombre deseado)
+```
+useardd -m usuario
+```
+```
+passwd usuario
+```
+9.3 Agregar privilegios root a usuario (cambiar **_usuario_** por el nombre deseado)
+```
+usermod -aG wheel usuario
+```
+9.4 Configuración de permisos de sudo
+```
+nano /etc/sudoers
+```
+Buscar (ctrl + w) esta parte:
+```
+## Uncomment to allow members of group wheel to execute any command
+#%wheel ALL=(ALL:ALL) ALL
+```
+9.5 Agregar nombre a tu portatil o pc (Cambiar **nombre** por el nombre de la pc deseada, en caso de que no exista el archivo /etc/hostname crearlo con `mkdir /etc/hostname`)
+```
+echo nombre > /etc/hostname
+```
+Descomentar eliminando el **#** que precede a **wheel**, presionar **ctrl + o**, confirmar y presionar **ctrl + x** para salir.
+### 10. Configuraciones adicionales
+10.1 Zona horaria
+```
+ln -sf /usr/share/zoneinfo/Región/Ciudad /etc/localtime
+```
+Por ejemplo para Perú:
+```
+ln -sf /usr/share/zoneinfo/America/Lima /etc/localtime
+```
+Adicionalmente:
+```
+hwclock --systohc
+```
+10.2 Idioma del sistema
+```
+nano 
+```
+10.2 Distribución de teclado
