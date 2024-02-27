@@ -263,4 +263,14 @@ cd yay
 ```
 makepkg -si
 ```
+### 16. Actualizar grub con windows
+```
+sudo os-prober
+```
+```
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+```
+reboot
+```
 ### FIN
