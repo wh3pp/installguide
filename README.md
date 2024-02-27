@@ -229,4 +229,38 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 ```
-10.6 
+### 11. Salir y reiniciar
+```
+exit
+```
+```
+reboot
+```
+### 12. Iniciar sesión con el nombre de usuario creado y la contraseña
+### 13. Activar el servicio de wpa_supplicant y network manager para conectarse a una red wifi
+```
+systemctl enable --now NetworkManager
+```
+```
+systemctl enable --now wpa_supplicant
+```
+### 14. Conectarse a una red wifi
+listar redes wifi
+```
+sudo nmcli dev wifi list
+```
+conectarse a la red wifi, reemplazar SSID con el nombre de la red:
+```
+sudo nmcli dev wifi connect SSID password contraseña
+```
+### 15. Instalar el helper de AUR : yay
+```
+git clone https://aur.archlinux.org/yay.git
+```
+```
+cd yay
+```
+```
+makepkg -si
+```
+### FIN
