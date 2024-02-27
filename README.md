@@ -218,7 +218,7 @@ Para el latinoamericano:
 ```
 echo "KEYMAP=la-latin1\nXKBLAYOUT=latam" > /etc/vconsole.conf
 ```
-10.3 Instalar grub (Si se desea cambiar Arch por otro
+10.3 Instalar grub(el id se puede cambiar)
 ```
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch
 ```
@@ -250,7 +250,7 @@ listar redes wifi
 ```
 sudo nmcli dev wifi list
 ```
-conectarse a la red wifi, reemplazar SSID con el nombre de la red:
+conectarse a la red wifi, reemplazar SSID con el nombre de la red y contraseña con la contraseña de la red wifi:
 ```
 sudo nmcli dev wifi connect SSID password contraseña
 ```
