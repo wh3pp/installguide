@@ -116,7 +116,7 @@ mkfs.ext4 /dev/sdXY
 ```
 4.3 Formatear la particion swap (reemplazar **_sdXY_** con la etiqueta de la particion swap)
 ```
-mkfswap /dev/sdXY
+mkswap /dev/sdXY
 ```
 ### 5. Montar las particiones
 5.1 Montar /root (reemplazar **_sdXY_** con la etiqueta de la particion root)
