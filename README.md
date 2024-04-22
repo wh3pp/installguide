@@ -148,7 +148,7 @@ pacstrap /mnt efibootmgr os-prober
 > [!NOTE]
 > El archivo /etc/fstab (abreviatura de "file system table") es un archivo de configuración en sistemas operativos Unix y Linux que mapea las particiones de disco y dispositivos de almacenamiento en el sistema de archivos. En él, se especifican las opciones de montaje y configuraciones asociadas para cada partición o dispositivo.
 ```
-genfstan -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 ```
 ### 8. Cambiar al entorno chroot
 > [!NOTE]
