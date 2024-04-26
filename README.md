@@ -216,7 +216,7 @@ locale-gen
 
 Para el latinoamericano:
 ```
-echo "KEYMAP=la-latin1\nXKBLAYOUT=latam" > /etc/vconsole.conf
+echo "KEYMAP=la-latin1" > /etc/vconsole.conf
 ```
 10.3 Instalar grub(el id se puede cambiar)
 ```
