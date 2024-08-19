@@ -24,7 +24,7 @@
 ```
 loadkeys la-latin1
 ```
-### 2. Conectarse a internet mediante iwctl
+### 2. Conectarse a internet mediante iwctl (Wifi)
 > [!NOTE]
 > Comprobar que la tarjeta no esté bloqueada con rfkill.
 > ```
