@@ -20,7 +20,7 @@
 > * Sony: F1, F2, F3 o botón de asistencia
 > * Toshiba: Escape, F2 o F1
 ## Instalación
-### 1. Cambiar a teclado latino
+### 1. Cambiar a teclado latino, solo si es el caso
 ```
 loadkeys la-latin1
 ```
@@ -163,7 +163,7 @@ passwd
 ```
 9.2 Agregar usuario y asignarle una contraseña (cambiar **_usuario_** por el nombre deseado)
 ```
-useardd -m usuario
+useradd -m usuario
 ```
 ```
 passwd usuario
@@ -183,7 +183,7 @@ Buscar (ctrl + w) esta parte:
 ```
 Descomentar eliminando el **#** que precede a **wheel**, presionar **ctrl + o**, confirmar y presionar **ctrl + x** para salir.
 
-9.5 Agregar nombre a tu portatil o pc (Cambiar **nombre** por el nombre de la pc deseada, en caso de que no exista el archivo /etc/hostname crearlo con `mkdir /etc/hostname`)
+9.5 Agregar nombre a tu portatil o pc (Cambiar **nombre** por el nombre de la pc deseada, en caso de que no exista el archivo /etc/hostname crearlo con `touch /etc/hostname`)
 ```
 echo nombre > /etc/hostname
 ```
