@@ -1,4 +1,4 @@
-# Arch linux guia
+# Arch linux guia - DUAL BOOT
 ## Preinstalación
 ### 1. Descargar el iso desde la [página oficial](https://archlinux.org/download/).
 > [!NOTE]
